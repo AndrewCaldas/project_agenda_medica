@@ -1,0 +1,115 @@
+/* -- layout -- */
+
+html, body, .capa {
+	height: 100%;
+}
+
+/* -- Navegador- */
+
+.navbar {
+	background: #A5A5AF;
+	border: 0.4px solid #373737;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+	background: #535353;
+	color: white;
+}
+
+nav.navbar-transparente {
+	padding: 15px 0px;
+	background: rgba(0, 0, 0, 0.6);
+	border: none;
+}
+
+/* -- Capa - contas -- */
+
+.capa {
+	padding: 100px 0px 100px 0px;
+	display: table;
+	width: 100%;
+}
+
+.capa-login {
+	padding: 100px 0px 300px 0px;
+	display: table;
+	width: 100%;
+}
+
+.texto-capa {
+	text-align: center;
+	color: black;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.texto-center {
+	text-align: center;
+}
+
+.texto-left {
+	text-align: left;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.texto-right {
+	text-align: right;
+	
+}
+
+
+/* -- Botões -- */
+.btn-custom {
+	color: white; 
+	border-radius: 500px;
+	-webkit-border-radius: 500px;
+	-moz-border-radius: 500px;
+	padding: 10px 35px;
+	margin: 0px 15px;
+	text-transform: uppercase;
+	transition: background 0.4s, color 0.4s;
+}
+
+.btn-custom2 {
+	color: white; 
+	border-radius: 500px;
+	-webkit-border-radius: 500px;
+	-moz-border-radius: 500px;
+	padding: 10px 35px;
+	margin: 0px 0px;
+	text-transform: uppercase;
+	transition: background 0.4s, color 0.4s;
+}
+
+
+.btn-padrao {
+	background: white;
+	color: #373737;
+}
+.btn-padrao:hover {
+	background: #E7DFDD;
+	color: #0E0B16;
+	box-shadow: 1px 2px 10px #E7DFDD;
+}
+
+.btn-pad {
+	background: #A5A5AF;
+	color: white;
+}
+.btn-pad:hover {
+	background: #535353;
+	color: #F8EEE7;
+	box-shadow: 1px 2px 10px #535353;
+}
+
+
+
+
+
+
+
