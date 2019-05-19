@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Agenda Médica Online - Clínica</title>
-
+    <title>Agenda Médica Online - clinico</title>
 
     <!-- Imagehover CSS -->
     <link rel="stylesheet" href="../css/imagehover.min.css">
@@ -64,25 +63,35 @@
 
            <!-- Cadastro -->
         <div class="capa">
-          <div class="col-sm-8">
-           <h3 class="text"><b>Cadastramento Clínica</b></h3>
+          <div class="col-sm-8 card-box">
+           <h3 class="text"><b>Cadastramento Clínico</b></h3>
            <br><br>
 
             <form>
 
-                <!-- Nome -->
-                <div class="form-group">
-                  <label for="nome">*Nome da Clínica:</label>
-                  <input type="text" id="nome" class="form-control">
-                </div>
-
                 <div class="row">
+
+                     <!-- Nome do medico -->
+                <div class="form-group col-md-6">
+                        <label for="nome">*Nome do médico:</label>
+                        <input type="text" id="nome" class="form-control">
+                        <small id="nomeHelp" class="form-text text-muted">Insira o nome completo, por favor.</small>
+                      </div>
+
                     <!-- cpf -->
                     <div class="form-group col-md-6">
-                      <label for="cnpj">*CNPJ:</label>
-                      <input type="numeric" id="cnpj" class="form-control">
-                      <small id="CNPJHelp" class="form-text text-muted">Preenchimento do CNPJ, é obrigatorio!</small>
+                        <label for="cpf">*CPF:</label>
+                        <input type="numeric" id="cpf" class="form-control">
+                        <small id="cpfHelp" class="form-text text-muted">Preenchimento do CPF, é obrigatorio!</small>
                     </div>
+
+                     <!-- crm-->
+                     <div class="form-group col-md-6">
+                            <label for="crm">*CRM:</label>
+                            <input type="numeric" id="crm" class="form-control">
+                            <small id="crmJHelp" class="form-text text-muted">Preenchimento do CRM, é obrigatorio!</small>
+                          </div>
+
 
                     <!-- CEP -->
                     <div class="form-group col-md-6">
@@ -158,26 +167,35 @@
                       <input type="tel" id="tel" class="form-control" placeholder="ex: +55 11 24875698">
                     </div>
 
+                     <!-- CPNJ Clínica -->
+                     <div class="form-group col-md-6">
+                            <label for="cnpj">*CNPJ da clínica:</label>
+                            <br>
+                            <select name="cpnj-clinica">
+                                <option value="cpnj-clinica">Selecione o CPNJ de sua clínica</option>
+                                <option value="1">Clinica 1</option>
+                                <option value="2">Clinica 2</option>
+                                <option value="3">Clinica 3</option>
+                                <option value="4">Clinica 4</option>
+                                <option value="5">Clinica 5</option>
+                                <option value="6">Clinica 6</option>
+                                <option value="7">Clinica 7</option>
+                                <option value="8">Clinica 8</option>
+                                <option value="9">Clinica 9</option>
+                                <option value="10">Clinica 10</option>
+                            </select>
+    
+    
+                         <!--  
+                          <input type="numeric" id="cnpj" class="form-control">
+                          <small id="CNPJHelp" class="form-text text-muted">Preenchimento do CNPJ da clínica, é obrigatorio!</small> -->
+                        </div>
+
                 </div>
 
-                <div class="row">
-                <!-- responsavel -->
-                <div class="form-group col-md-8">
-                  <label for="responsavel">*Responsável:</label>
-                  <input type="text" id="responsavel" class="form-control">
-                </div>
-
-                <!-- CEP -->
-                       
-                    <div class="form-group col-md-4">
-                      <label for="cpf-responsavel">*CPF do Responsável:</label>
-                      <input type="numeric" id="cpf-responsavel" class="form-control">
-                    </div>
-                </div>
-                
                 <br>
 
-                <a href="#" class="btn btn-custom btn-pad ">Cadastrar</a>
+                <a href="#" class="btn btn-custom btn-pad ">Cadastrar Especialidade</a>
 
                 <a href="conta.html" class="btn btn-custom btn-pad ">Voltar</a>
               
@@ -196,13 +214,11 @@
 
     </div>
 
-    
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
-  </body>
+    
+</body>
 </html>

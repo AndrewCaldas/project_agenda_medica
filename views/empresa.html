@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Agenda Médica Online - Credenciado</title>
+    <title>Agenda Médica Online - Clínica</title>
 
 
-   <!-- Imagehover CSS -->
-   <link rel="stylesheet" href="../css/imagehover.min.css">
-   <!-- Bootstrap -->
-   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-   <link href="../css/estilo.css" rel="stylesheet">
+    <!-- Imagehover CSS -->
+    <link rel="stylesheet" href="../css/imagehover.min.css">
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/estilo.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -65,48 +65,37 @@
            <!-- Cadastro -->
         <div class="capa">
           <div class="col-sm-8 card-box">
-           <h3 class="text"><b>Cadastramento Credenciado</b></h3>
+           <h3 class="text"><b>Cadastramento Clínica</b></h3>
            <br><br>
+
             <form>
 
                 <!-- Nome -->
                 <div class="form-group">
-                  <label for="nome">*Nome:</label>
+                  <label for="nome">*Nome da Clínica:</label>
                   <input type="text" id="nome" class="form-control">
-                  <small id="nomeHelp" class="form-text text-muted">Insira o nome completo, por favor.</small>
                 </div>
 
-                <!-- cpf -->
                 <div class="row">
+                    <!-- cpf -->
                     <div class="form-group col-md-6">
-                      <label for="cpf">*CPF:</label>
-                      <input type="numeric" id="cpf" class="form-control">
-                      <small id="cpfHelp" class="form-text text-muted">Preenchimento do CPF é obrigatorio!</small>
+                      <label for="cnpj">*CNPJ:</label>
+                      <input type="numeric" id="cnpj" class="form-control">
+                      <small id="CNPJHelp" class="form-text text-muted">Preenchimento do CNPJ, é obrigatorio!</small>
                     </div>
 
-                <!-- data de nascimento -->
-                    <div class="form-group col-md-3 text">
-                      <label for="data-nasc">*Data de Nascimento:</label>
-                      <input type="date" id="data-nasc" class="form-control">
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                <!-- endereço -->
-                <div class="form-group col-md-8">
-                  <label for="end">*Endereço:</label>
-                  <input type="text" id="end" class="form-control" placeholder="ex: Rua Joaquim Santos">
-                  <small id="endereçoHelp" class="form-text text-muted">Insira um endereço existente, por favor.</small>
-                </div>
-
-                <!-- CEP -->
-                    <div class="form-group col-md-4">
+                    <!-- CEP -->
+                    <div class="form-group col-md-6">
                       <label for="cep">*CEP:</label>
                       <input type="numeric" id="cep" class="form-control">
                     </div>
+                </div>
 
+                <!-- endereço -->
+                <div class="form-group">
+                  <label for="end">*Endereço:</label>
+                  <input type="text" id="end" class="form-control" placeholder="ex: Rua Aguiar Meira">
+                  <small id="endereçoHelp" class="form-text text-muted">Insira um endereço existente, por favor.</small>
                 </div>
 
                 <!-- bairro -->
@@ -163,36 +152,29 @@
 
                 <div class="row">
 
-                <!-- telefone -->
-                <div class="form-group col-md-5">
-                  <label for="tel">*Telefone Residencial:</label>
-                  <input type="tel" id="tel" class="form-control" placeholder="ex: +55 11 24875698">
-                </div>
-
-                <!-- celular -->
-                <div class="form-group col-md-5">
-                  <label for="cel">*Celular:</label>
-                  <input type="tel" id="cel" class="form-control" placeholder="ex: +55 11 945878653">
-                </div>
+                    <!-- telefone -->
+                    <div class="form-group col-md-4">
+                      <label for="tel">*Telefone:</label>
+                      <input type="tel" id="tel" class="form-control" placeholder="ex: +55 11 24875698">
+                    </div>
 
                 </div>
 
-                <!-- conveniado  -->
-
-                <div class="radio">
-
-                  <label class="text">Conveniado: </label>  
-
-                  <label class="text">
-                    <input type="radio" name="escolha"> Sim
-                  </label>
-
-                  <label class="text">
-                    <input type="radio" name="escolha"> Não
-                  </label>
-
+                <div class="row">
+                <!-- responsavel -->
+                <div class="form-group col-md-8">
+                  <label for="responsavel">*Responsável:</label>
+                  <input type="text" id="responsavel" class="form-control">
                 </div>
 
+                <!-- CEP -->
+                       
+                    <div class="form-group col-md-4">
+                      <label for="cpf-responsavel">*CPF do Responsável:</label>
+                      <input type="numeric" id="cpf-responsavel" class="form-control">
+                    </div>
+                </div>
+                
                 <br>
 
                 <a href="#" class="btn btn-custom btn-pad ">Cadastrar</a>
@@ -209,7 +191,7 @@
         <br><br>
 
         <footer>
-        <p>&copy; 2019 - Plus AMO Company</p>
+        <p>&copy; 2019 - Plus AMO Company </p>
         </footer>
 
     </div>
