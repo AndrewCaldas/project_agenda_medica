@@ -65,7 +65,7 @@
            <!-- Cadastro -->
         <div class="capa">
           <div class="col-sm-8">
-           <h3><b>Cadastramento Clínica</b></h3>
+           <h3 class="text"><b>Cadastramento Clínica</b></h3>
            <br><br>
 
             <form>
@@ -81,6 +81,7 @@
                     <div class="form-group col-md-6">
                       <label for="cnpj">*CNPJ:</label>
                       <input type="numeric" id="cnpj" class="form-control">
+                      <small id="CNPJHelp" class="form-text text-muted">Preenchimento do CNPJ, é obrigatorio!</small>
                     </div>
 
                     <!-- CEP -->
@@ -94,6 +95,7 @@
                 <div class="form-group">
                   <label for="end">*Endereço:</label>
                   <input type="text" id="end" class="form-control" placeholder="ex: Rua Aguiar Meira">
+                  <small id="endereçoHelp" class="form-text text-muted">Insira um endereço existente, por favor.</small>
                 </div>
 
                 <!-- bairro -->
