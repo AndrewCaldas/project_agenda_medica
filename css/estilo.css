@@ -138,6 +138,26 @@ nav.navbar-transparente:hover {
 }
 
 
+/* OUTHERS CARDS */
+
+.colum {
+	width: 130px;
+	height: 150px;
+	background: white;
+	margin-top: 56px;
+	margin-left: -3.7rem;
+	box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+}
+
+.colum:hover {
+	width: 130px;
+	height: 150px;
+	background: white;
+	margin-top: 56px;
+	margin-left: -3.7rem;
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
 /* -- Botões -- */
 .btn-custom {
 	color: white; 
