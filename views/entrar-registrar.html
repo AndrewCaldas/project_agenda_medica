@@ -8,9 +8,11 @@
     <title>Agenda Médica Online - Registrar</title>
 
 
+    <!-- Imagehover CSS -->
+    <link rel="stylesheet" href="../css/imagehover.min.css">
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="estilo.css" rel="stylesheet">
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/estilo.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,8 +43,7 @@
               <li> <a href="index.html">Home</a> </li>
               <li> <a href="#">Contato</a> </li>
               <li> <a href="#">Ajuda</a> </li>
-              <li> <a href="registrar.html">Cadastrar-se</a> </li>
-              <li> <a href="login.html">Entrar</a> </li>
+              <li> <a href="entrar-registrar.html">Entrar/Registrar</a> </li>
           </div>
         </div>
       </nav>
@@ -52,34 +53,39 @@
        <!-- Cadastro -->
       <div class="capa">
       
-        <div class="col-sm-8">
+        <div class="col-sm-8 card-login card-efeito">
        
-          <h3>Cadastre-se</h3>
+          <h3 class="text">Cadastre-se</h3>
                 <form>
 
                     <div class="form-group">
                       <label for="nome">Nome</label>
                       <input type="text" class="form-control" id="nome">
+                      <small id="nomeHelp" class="form-text text-muted">Nome completo, por favor.</small>
                     </div>
 
                     <div class="form-group">
                       <label for="email">E-mail</label>
                       <input type="email" class="form-control" id="email">
+                      <small id="endereçoHelp" class="form-text text-muted">Digite um e-mail válido, por favor.</small>
                     </div>
 
                     <div class="form-group">
                       <label for="senha">Senha</label>
                       <input type="password" class="form-control" id="senha">
+                      <small id="senhaHelp" class="form-text text-muted">Digite uma senha de até 8 digitos, uma letra e um simbolo, por favor.</small>  
                     </div>
 
                     <div class="form-group">
                       <label for="senha">Confirmar Senha</label>
                       <input type="password" class="form-control" id="senha">
+                      <small id="senhaHelp" class="form-text text-muted">Digite sua senha novamente.</small>
                     </div>
 
                     <div class="checkbox">
                       <label for="check">
-                      <input type="checkbox" id="check"> Aceito os termos de serviço!
+                      <input type="checkbox" id="check"> Aceito os <a href="#">termos de serviço.</a>
+                      <small id="senhaHelp" class="form-text text-muted">Caso concorde com os termos.</small>
                       </label>
                     </div>
 
@@ -99,6 +105,39 @@
                   </form>
 
         </div>
+
+         <!-- Login -->
+         <div class="col-sm-10 card-login card-efeito">
+              
+            <h3 class="text">Logar</h3>
+            <br>
+            
+            <form>
+
+              <div class="form-group">
+                 <input type="e-mail" class="form-control" id="email-login" placeholder="Digite seu e-mail">        
+              </div>
+
+              <div class="form-group">
+                 <input type="password" class="form-control" id="senha-login" placeholder="Digite sua senha">       
+              </div>
+
+              <div class="form-check">
+                <label> <input type="checkbox" class="form-check-input" value=""> Lembre-me</label>
+              </div>
+
+              <div>
+                <a href="trocar-senha.html">Esqueci minha senha?</a> 
+                <small id="senhaHelp" class="form-text text-muted">Caso tenha esquecido sua senha.</small>
+              </div>
+
+              <br>
+             
+               <a href="conta.html" type="submit" class="btn btn-custom2 btn-pad">Logar</a>
+
+              </form>
+
+      </div>
 
       </div>
 

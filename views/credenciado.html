@@ -8,9 +8,11 @@
     <title>Agenda Médica Online - Credenciado</title>
 
 
-    <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="estilo.css" rel="stylesheet">
+   <!-- Imagehover CSS -->
+   <link rel="stylesheet" href="../css/imagehover.min.css">
+   <!-- Bootstrap -->
+   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="../css/estilo.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,8 +64,8 @@
 
            <!-- Cadastro -->
         <div class="capa">
-          <div class="col-sm-8">
-           <h3><b>Cadastramento Credenciado</b></h3>
+          <div class="col-sm-8 card-box">
+           <h3 class="text"><b>Cadastramento Credenciado</b></h3>
            <br><br>
             <form>
 
@@ -71,6 +73,7 @@
                 <div class="form-group">
                   <label for="nome">*Nome:</label>
                   <input type="text" id="nome" class="form-control">
+                  <small id="nomeHelp" class="form-text text-muted">Insira o nome completo, por favor.</small>
                 </div>
 
                 <!-- cpf -->
@@ -78,10 +81,11 @@
                     <div class="form-group col-md-6">
                       <label for="cpf">*CPF:</label>
                       <input type="numeric" id="cpf" class="form-control">
+                      <small id="cpfHelp" class="form-text text-muted">Preenchimento do CPF é obrigatorio!</small>
                     </div>
 
                 <!-- data de nascimento -->
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-3 text">
                       <label for="data-nasc">*Data de Nascimento:</label>
                       <input type="date" id="data-nasc" class="form-control">
                     </div>
@@ -94,6 +98,7 @@
                 <div class="form-group col-md-8">
                   <label for="end">*Endereço:</label>
                   <input type="text" id="end" class="form-control" placeholder="ex: Rua Joaquim Santos">
+                  <small id="endereçoHelp" class="form-text text-muted">Insira um endereço existente, por favor.</small>
                 </div>
 
                 <!-- CEP -->
@@ -176,13 +181,13 @@
 
                 <div class="radio">
 
-                  <label>Conveniado: </label>  
+                  <label class="text">Conveniado: </label>  
 
-                  <label>
+                  <label class="text">
                     <input type="radio" name="escolha"> Sim
                   </label>
 
-                  <label>
+                  <label class="text">
                     <input type="radio" name="escolha"> Não
                   </label>
 

@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Agenda Médica Online - Index</title>
+    <title>Agenda Médica Online - Trocar senha</title>
 
 
+    <!-- Imagehover CSS -->
+    <link rel="stylesheet" href="../css/imagehover.min.css">
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="estilo.css" rel="stylesheet">
-
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/estilo.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,33 +39,63 @@
           <div class="collapse navbar-collapse" id="barra-navegacao">
 
             <ul class="nav navbar-nav navbar-right">
-              <li> <a href="index.html">Home</a> </li>
+              <li> <a href="login.html">Home</a> </li>
               <li> <a href="#">Contato</a> </li>
               <li> <a href="#">Ajuda</a> </li>
-              <li> <a href="registrar.html">Cadastrar-se</a> </li>
-              <li> <a href="login.html">Entrar</a> </li>
+
+                 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Minha Conta <span class="caret"></span>
+                  </a>
+
+                    <ul class="dropdown-menu">
+                       <li><a href="#">Editar</a> </li>
+                       <li><a href="#">Logout</a> </li>
+                    </ul>
+
+                 </li>
+            </ul>
           </div>
         </div>
       </nav>
 
     <div class="container">
 
-       <!-- Tela -->
-    <div class="capa">
-      
-      <div class="col-sm-8">
-       <h3>Tela inicial</h3>
-      </div>
+       <!-- Recuperador de senha -->
+        <div class="capa">
+          <div class="texto-left col-md-6 card-box">
+           <h3 class="text">Recuperação de Senha</h3>
+           <br>
+          
+              <form>
+                <div class="form-group">
+                  
+                  <label for="cpf">Digite seu CPF:</label>
+                  <input type="numeric" class="form-control" id="cpf">
+                  <small id="Help" class="form-text text-muted">
+                      <br>
+                      <p>*Após clicar no botão Enviar, verifique o seu e-mail para a recuperação de sua senha, caso não localize, verificar
+                      a sua área de spam.</p>
+                      <br>
+                  </small>
+                
+                </div>
+              </form>
 
-    </div>
+              <a href="#" class="btn btn-custom2 btn-pad ">Enviar</a>
 
-      <br><br>
+              <a href="entrar-registrar.html" class="btn btn-custom btn-pad ">Voltar</a>
+
+          </div>
+         </div>
+
+         <br><br>
 
         <footer>
-        <p>&copy;2019 - Plus AMO Company</p>
+        <p>&copy; 2019 - Plus AMO Company</p>
         </footer>
-
-   </div>
+         
+    </div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
