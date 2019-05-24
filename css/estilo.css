@@ -101,6 +101,7 @@ nav.navbar-transparente:hover {
 .card-efeito:hover {
 	box-shadow: 0 1rem 2rem rgba(0,0,0,.15)!important;
 	transition: all 0.3s;
+	color: black;
 }
 
 /*  --  CARD BOX  --  */
@@ -190,6 +191,7 @@ nav.navbar-transparente:hover {
 	margin-left: 2rem;
 	background: white;
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+	text-align: center;
 }
 
 .colum-buttom:hover {
@@ -292,6 +294,42 @@ nav.navbar-transparente:hover {
 .text {
 	text-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
+
+a:link {
+	text-decoration: none;
+}
+
+.text-black{
+	color: black;
+}
+
+.text-cinza{
+	color: #b2b2b2;
+}
+
+.text-roxo {
+	color: rgb(72, 52, 212, 0.8);
+}
+
+.flex {
+	transition: all 0.2s;
+}
+
+.text-center {
+	margin-top: 10rem;
+}
+
+.text-white{
+	color:white;
+}
+
+.text-custom {
+	color: black;
+	text-transform: uppercase;
+}
+
+
+
 
 
 
