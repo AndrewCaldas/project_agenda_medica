@@ -20,7 +20,7 @@ body, html {
 /* GRID */
 .grid-container {
 	display: grid;
-	grid-template-columns: 185px 185px auto 246px;
+	grid-template-columns: 185px auto auto;
 }
 
 /* -- Navegador- */
@@ -178,7 +178,7 @@ nav.navbar-transparente:hover {
 }
 
 .fixed {
-	position:absolute;
+	position:relative;
 }
 
 /* .box-left {
@@ -214,7 +214,7 @@ nav.navbar-transparente:hover {
 }
 
 .colum-opcao {
-	width: 180px;
+	width: 94%;
 	height: 550px;
 	background: white;
 	/* box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; */
@@ -230,8 +230,9 @@ nav.navbar-transparente:hover {
 }
 
 .colum-box-top {
-	width: 745px;
-	height: 233px;
+	/* width: 745px; */
+	width: 97%;
+	height: 550px;
 	margin-bottom: 4px;
 	background: white;
 	/* box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; */
