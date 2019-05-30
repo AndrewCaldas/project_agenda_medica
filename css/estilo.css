@@ -20,8 +20,18 @@ body, html {
 /* GRID */
 .grid-container {
 	display: grid;
-	grid-template-columns: 185px auto auto;
+	grid-template-columns: 185px auto;
 }
+
+.grid-card {
+	display: table;
+	width: 100%;
+	/* grid-gap: 10rem; */
+}
+/* .grid-card{
+	display: auto;
+	grid-template-columns: auto auto;
+} */
 
 /* -- Navegador- */
 
@@ -126,6 +136,18 @@ nav.navbar-transparente:hover {
 	background-color: rgb(245, 245, 245) !important;
 }
 
+.card-form {
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+	margin-bottom: 5rem!important;
+	padding: 5rem!important;
+	border-radius: .50rem!important;
+	background-color: rgb(245, 245, 245) !important;
+}
+
+.m{
+	margin-top: 5px;
+}
+
 .card-centro {
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 	margin: 180px;
@@ -200,7 +222,8 @@ nav.navbar-transparente:hover {
 	margin-left: 2rem;
 	background: white;
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-	text-align: center;
+	/* text-align: center; */
+	border-radius: 3px;
 }
 
 .colum-buttom:hover {
@@ -215,7 +238,7 @@ nav.navbar-transparente:hover {
 
 .colum-opcao {
 	width: 94%;
-	height: 550px;
+	height: 280px;
 	background: white;
 	/* box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important; */
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
@@ -334,8 +357,26 @@ a:link {
 }
 
 .text-custom {
+	text-align: center;
+	text-transform: capitalize;
+	letter-spacing: -0.5px;
+	line-height: 3.5;
+}
+
+#agenda {
 	color: black;
-	text-transform: uppercase;
+}
+
+#veragenda {
+	color: black;
+}
+
+#reagenda {
+	color: black;
+}
+
+#editar {
+	color: black;
 }
 
 

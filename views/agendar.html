@@ -60,27 +60,29 @@
         </div>
       </nav>
 
+      <!-- <div class="container barrinha"></div> -->
+
     <div class="grid-container ">
             
-        <div class="row">
-          <div class="barrinha top"></div>
+        <div class="row top">
+          <!-- <div class="barrinha top"></div> -->
             
             <div class="fixed">
                     <div class="colum-picture">
                       <label style="margin: 16.5rem 2px 2px 1.8rem; font-size: 12px;">Nome do Credenciado</label>
                     </div>
                     <!-- <div class="colum-buttom"></div> -->
-                      <div class="text-custom">
+                      <div class="text-custom text">
                         <a href="#" class="btn-toggle" id="agenda" data-element="#agendar"> 
-                          <div class="colum-buttom"><b>Agendar</b></div>
+                          <div class="colum-buttom">Agendar</div>
                         </a>
-                        <a href="#" class="text-center">
+                        <a href="#" class="" id="veragenda" data-element=#veragenda>
                           <div class="colum-buttom">Ver Agenda</div>
                         </a>
-                        <a href="#" class="text-center">
+                        <a href="#" class="" id="reagenda" data-element="#reagenda">
                           <div class="colum-buttom">Re-agendar</div>
                         </a>
-                        <a href="#">
+                        <a href="#" class="editar" id="editar" data-element="#editar">
                           <div class="colum-buttom">Editar Cadastro</div>
                         </a>
                     </div>
@@ -89,61 +91,62 @@
         
         <!-- Esconder class, apenas adicione "hidden a classe" -->
 
-        <div class="row top">
-                <div class="colum-opcao" id="agendar">
-                        <br>
-                        <div class="col-md-10">
-                                <!-- <form>
-                                        <div class="col-md-7">
-                                            <label for="">Clinicas: </label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">1</option>
-                                                <option value="">1</option>
-                                                <option value="">1</option>
-                                            </select>
-                
-                                            <br>
-                                        
-                                            <label for="">Especialidade: </label>
-                                            <select name="" id="" class="form-control">
-                                                <option value="">1</option>
-                                                <option value="">1</option>
-                                                <option value="">1</option>
-                                            </select> 
+        <div class="row top">                             
+                        <div class="card-form m" id="agendar">
+                            <form>
+                                <div class="grid-card">
+
+                                    <div class="col-md-7">
+                                        <label for="">Clinicas: </label>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                        </select>
+            
+                                        <br>
+                                    
+                                        <label for="">Especialidade: </label>
+                                        <select name="" id="" class="form-control">
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                        </select> 
+                                    </div>
+
+                                    
+            
+                                    <div class="col-md-5">
+                                        <label for="data">Selecione uma data: </label>
+                                        <input type="date" id="data" class="form-control">
+                                    
+                                        <br><br>
+
+                                        <div class="radio">
+                                            <label><b> Sua primeira consulta ? </b></label>
+
+                                            <label for="sim">
+                                                <input type="radio" id="sim" name="escolha"> Sim
+                                            </label>
+
+                                            <label for="nao">
+                                                <input type="radio" id="nao" name="escolha"> Não
+                                            </label>
                                         </div>
-                
-                                        <div class="row col-md-5">
-                                            <label for="data">Selecione uma data: </label>
-                                            <input type="date" id="data" class="form-control">
-                                        
-                                            <br><br>
-    
-                                            <div class="radio">
-                                                <label>Selecione: </label>
-    
-                                                <label for="sim">
-                                                    <input type="radio" id="sim" name="escolha"> Sim
-                                                </label>
-    
-                                                <label for="nao">
-                                                    <input type="radio" id="nao" name="escolha"> Não
-                                                </label>
-                                            </div>
-                                        </div>
-                                </form> -->
+                                    </div>  
+
+                                </div> <!-- Fim row -->   
+
+                                <br><br>
+                                
+                                <div style="text-align:center;">
+                                    <a href="#" type="submit" class="btn btn-custom btn-pad">Agendar agora</a>
+                                </div>
+
+                          </form>
                         </div>
                 </div>
         </div>
-
-        <div class="row top">
-                <div class="colum-box-top">
-                    
-                    
-                   
-                </div>
-                <!-- <div class="colum-box-bottom"></div> -->
-        </div>
-        
     </div>
 
     <!-- --- FOOTER --- -->
