@@ -139,9 +139,9 @@ nav.navbar-transparente:hover {
 .card-form {
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 	margin-bottom: 5rem!important;
-	padding: 5rem!important;
+	padding: 10rem!important;
 	border-radius: .50rem!important;
-	background-color: rgb(245, 245, 245) !important;
+	background-color: rgb(255, 255, 255) !important;
 }
 
 .m{
@@ -186,14 +186,14 @@ nav.navbar-transparente:hover {
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 
-/* .colum-picture:hover {
-	width: 130px;
-	height: 150px;
-	background: white;
-	margin-top: 56px;
-	margin-left: -3.7rem;
+.colum-picture:hover {
+	width: 160px;
+	height: 200px;
+	background-color: rgb(245, 245, 245) !important;
+	margin-top: 5px;
+	margin-left: 2rem;
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-} */
+}
 
 .top {
 	margin-top: 60px;
@@ -231,7 +231,8 @@ nav.navbar-transparente:hover {
 	height: 50px;
 	margin-top: 5px;
 	margin-left: 2rem;
-	background: white;
+	color: #F8EEE7;
+	background-color: rgba(77, 56, 212, 0.8) !important;
 	box-shadow: 0rem .5rem 1rem rgba(0,0,0,.15)!important;
 	transition: all 0.3s;
 }
@@ -330,6 +331,10 @@ nav.navbar-transparente:hover {
 
 a:link {
 	text-decoration: none;
+}
+
+.titulo {
+	font-size: 20px;
 }
 
 .text-black{
