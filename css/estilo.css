@@ -139,7 +139,7 @@ nav.navbar-transparente:hover {
 .card-form {
 	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 	margin-bottom: 5rem!important;
-	padding: 10rem!important;
+	padding: 2rem!important;
 	border-radius: .50rem!important;
 	background-color: rgb(255, 255, 255) !important;
 }
@@ -358,7 +358,7 @@ a:link {
 }
 
 .text-white{
-	color:white;
+	color: white;
 }
 
 .text-custom {
