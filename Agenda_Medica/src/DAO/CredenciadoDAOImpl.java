@@ -18,11 +18,11 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 		try {
 			String sql = "INSERT INTO credenciado "
 					+ "(id_credenciado, id_login, nome, cpf, cep, nascimento, endereco, bairro, cidade, estado, telefone, celular, convenio) VALUES "
-					+ "(0, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "(0, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
-			stmt.setInt(2, c.getCpf());
-			stmt.setInt(3, c.getCep());
+			stmt.setString(2, c.getCpf());
+			stmt.setString(3, c.getCep());
 			stmt.setDate(4, 
 					new java.sql.Date(c.getDatanasc().getTime()));
 			stmt.setString(5, c.getEnd());
@@ -48,8 +48,8 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 					+ "preco=?, lancamento=? WHERE id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
-			stmt.setInt(2, c.getCpf());
-			stmt.setInt(3, c.getCep());
+			stmt.setString(2, c.getCpf());
+			stmt.setString(3, c.getCep());
 			stmt.setDate(4, 
 					new java.sql.Date(c.getDatanasc().getTime()));
 			stmt.setInt(5, id);
@@ -87,10 +87,10 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) { 
 				Credenciado c = new Credenciado();
-				c.setId(rs.getInt("id"));
+				//c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
-				c.setCpf(rs.getInt("cpf"));
-				c.setCep(rs.getInt("cep"));
+				c.setCpf(rs.getString("cpf"));
+				c.setCep(rs.getString("cep"));
 				c.setDatanasc(rs.getDate("datanasc"));
 				c.setEnd(rs.getString("end"));
 				c.setBairro(rs.getString("bairro"));
@@ -127,13 +127,13 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 				c = new Credenciado();
 				c.setId(rs.getInt("id"));
 				c.setNome(rs.getString("nome"));
-				c.setCpf(rs.getInt("cpf"));
-				c.setCep(rs.getInt("cep"));
+				c.setCpf(rs.getString("cpf"));
+				c.setCep(rs.getString("cep"));
 				c.setDatanasc(rs.getDate("datanasc"));
 				c.setEnd(rs.getString("end"));
 				c.setBairro(rs.getString("bairro"));
 				c.setCidade(rs.getString("cidade"));
-				//c.setEstado(rs.getString("estado"));
+				c.setEstado(rs.getString("estado"));
 				c.setTel(rs.getString("tel"));
 				c.setCel(rs.getString("cel"));
 				c.setEscolha(rs.getString("escolha"));

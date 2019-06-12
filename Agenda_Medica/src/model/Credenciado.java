@@ -7,8 +7,8 @@ public class Credenciado implements Serializable{
 	private static final long serialVersionUID = 5342902659347926787L;
 	private int id;
 	private String nome = "";
-	private int cpf;
-	private int cep;
+	private String cpf = "";
+	private String cep = "";
 	private Date datanasc = new Date();
 	private String end = "";
 	private String bairro = "";
@@ -32,17 +32,17 @@ public class Credenciado implements Serializable{
 		this.nome = nome;
 	}
 	
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 	

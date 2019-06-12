@@ -80,8 +80,8 @@ public class CredenciadoController extends HttpServlet {
 			}
 			String cmd = req.getParameter("cmd");
 			String nome = req.getParameter("nome");
-			int cpf = Integer.parseInt(req.getParameter("cpf"));
-			int cep = Integer.parseInt(req.getParameter("cep"));
+			String cpf = req.getParameter("cpf");
+			String cep = req.getParameter("cep");
 			String datanasc = req.getParameter("datanasc");
 			String end = req.getParameter("end");
 			String bairro = req.getParameter("bairro");
@@ -109,7 +109,7 @@ public class CredenciadoController extends HttpServlet {
 			
 			Credenciado c = new Credenciado();
 			c.setId(intId);
-			c.setNome( nome );
+			c.setNome(nome);
 			c.setCpf(cpf);
 			c.setCep(cep);
 			c.setDatanasc(sdf.parse(datanasc));

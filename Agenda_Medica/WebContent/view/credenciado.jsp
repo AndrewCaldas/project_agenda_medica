@@ -1,6 +1,6 @@
 <%@page import="DAO.CredenciadoDAOImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.text.SimpleDateFormat, java.util.List, java.util.ArrayList, model.Credenciado, model.Estado"%>
+<%@ page import="java.text.SimpleDateFormat, java.util.List, java.util.ArrayList, model.Credenciado"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
 <head>
@@ -22,6 +22,58 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <script type="text/javascript">
+			function fMasc(objeto,mascara) {
+				obj=objeto
+				masc=mascara
+				setTimeout("fMascEx()",1)
+			}
+			function fMascEx() {
+				obj.value=masc(obj.value)
+			}
+			function mTel(tel) {
+				tel=tel.replace(/\D/g,"")
+				tel=tel.replace(/^(\d)/,"($1")
+				tel=tel.replace(/(.{3})(\d)/,"$1)$2")
+				if(tel.length == 9) {
+					tel=tel.replace(/(.{1})$/,"-$1")
+				} else if (tel.length == 10) {
+					tel=tel.replace(/(.{2})$/,"-$1")
+				} else if (tel.length == 11) {
+					tel=tel.replace(/(.{3})$/,"-$1")
+				} else if (tel.length == 12) {
+					tel=tel.replace(/(.{4})$/,"-$1")
+				} else if (tel.length > 12) {
+					tel=tel.replace(/(.{4})$/,"-$1")
+				}
+				return tel;
+			}
+			function mCNPJ(cnpj){
+				cnpj=cnpj.replace(/\D/g,"")
+				cnpj=cnpj.replace(/^(\d{2})(\d)/,"$1.$2")
+				cnpj=cnpj.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+				cnpj=cnpj.replace(/\.(\d{3})(\d)/,".$1/$2")
+				cnpj=cnpj.replace(/(\d{4})(\d)/,"$1-$2")
+				return cnpj
+			}
+			function mCPF(cpf){
+				cpf=cpf.replace(/\D/g,"")
+				cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+				cpf=cpf.replace(/(\d{3})(\d)/,"$1.$2")
+				cpf=cpf.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+				return cpf
+			}
+			function mCEP(cep){
+				cep=cep.replace(/\D/g,"")
+				cep=cep.replace(/(\d{5})(\d{1,4})$/,"$1-$2")
+				return cep
+			}
+			function mNum(num){
+				num=num.replace(/\D/g,"")
+				return num
+			}
+		</script>
 </head>
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse navbar-transparente">
@@ -57,7 +109,6 @@
 			Credenciado credenciado = (Credenciado) session.getAttribute("CREDENCIADO");
 			if (credenciado == null) {
 				credenciado = new Credenciado();
-				//estado = new Estado();
 			}
 
 			CredenciadoDAOImpl credenciadoDAOImpl = new CredenciadoDAOImpl();
@@ -94,7 +145,7 @@
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label for="cpf">*CPF:</label>
-							<input type="numeric" name="cpf" class="form-control" value="<%=credenciado.getCpf()%>">
+							<input type="text" name="cpf" class="form-control" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );" value="<%=credenciado.getCpf()%>">
 							<small id="cpfHelp" class="form-text text-muted">Preenchimento do CPF é obrigatorio!</small>
 						</div>
 
@@ -116,7 +167,7 @@
 						<!-- CEP -->
 						<div class="form-group col-md-4">
 							<label for="cep">*CEP:</label>
-							<input type="numeric" name="cep" class="form-control" value="<%=credenciado.getCep()%>">
+							<input type="numeric" name="cep" class="form-control" maxlength="9" onkeydown="javascript: fMasc( this, mCEP );" value="<%=credenciado.getCep()%>">
 						</div>
 					</div>
 
@@ -173,13 +224,13 @@
 						<!-- telefone -->
 						<div class="form-group col-md-5">
 							<label for="tel">*Telefone Residencial:</label>
-							<input type="tel" name="tel" class="form-control" placeholder="ex: +55 11 24875698" value="<%=credenciado.getTel()%>">
+							<input type="tel" name="tel" class="form-control" placeholder="ex: (11) 2487-5698" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" value="<%=credenciado.getTel()%>">
 						</div>
 
 						<!-- celular -->
 						<div class="form-group col-md-5">
 							<label for="cel">*Celular:</label>
-							<input type="tel" name="cel" class="form-control" placeholder="ex: +55 11 945878653"  value="<%=credenciado.getCel()%>">
+							<input type="tel" name="cel" class="form-control" placeholder="ex: (11) 94587-8653" maxlength="14" onkeydown="javascript: fMasc( this, mTel );" value="<%=credenciado.getCel()%>">
 						</div>
 					</div>
 
