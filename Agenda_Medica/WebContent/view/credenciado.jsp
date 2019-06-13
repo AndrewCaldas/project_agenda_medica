@@ -131,7 +131,7 @@
 				<form action="../credenciadoController" method="post">
 					<!-- campo ID do registro -->
 					<div hidden>
-						<input type="numeric" name="id" class="form-control" value="<%=credenciado.getId() %>">
+						<input type="text" name="id" class="form-control" value="<%=credenciado.getId() %>">
 					</div>
            			
 					<!-- Nome -->
@@ -249,9 +249,10 @@
 					<br> <%if (credenciado.getId() == 0) { %>
 							<input type="submit" name="cmd" value="Cadastrar" class="btn btn-custom btn-pad "/>
 						 <%} else { %>
-						 	<div class="alert alert-warning">
+						 	<input type="submit" name="cmd" value="Salvar" class="btn btn-custom btn-pad "/>
+						 	<!-- <div class="alert alert-warning">
   								<strong>Alerta!</strong> Credenciado já existe.
-							</div>
+							</div> -->
 						 <% }%>
 
 					<a href="conta.jsp" class="btn btn-custom btn-pad ">Voltar</a>
@@ -259,6 +260,55 @@
 				</form>
 
 			</div>
+			
+			<%
+				List<Credenciado> lista = (List<Credenciado>)session.getAttribute("ENCONTRADOS");
+					if (lista == null) { 
+						lista = new ArrayList<>();
+					} else { 
+			%>
+						<table class="table table-striped ">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>CPF</th>
+								<th>Nascimento</th>
+								<th>Endereço</th>
+								<th>CEP</th>
+								<th>Bairro</th>
+								<th>Cidade</th>
+								<th>Estado</th>
+								<th>Telefone</th>
+								<th>Celular</th>
+								<th>Convenio</th>
+							</tr>
+						</thead>
+						<tbody>
+						<%
+							for (Credenciado c : lista) { 	%>
+							<tr>
+								<td><%=c.getId()%></td> 
+								<td><%=c.getNome()%></td> 
+								<td><%=c.getCpf()%></td> 
+								<td><%=sdf.format(c.getDatanasc())%></td>
+								<td><%=c.getEnd()%></td> 
+								<td><%=c.getCep()%></td>
+								<td><%=c.getBairro()%></td>
+								<td><%=c.getCidade()%></td>
+								<td><%=c.getEstado()%></td>
+								<td><%=c.getTel()%></td>
+								<td><%=c.getCel()%></td>
+								<td><%=c.getEscolha()%></td>        
+								<td>
+									<a href="./credenciado?cmd=editar&id=<%=c.getId()%>">Editar</a> - 
+									<a href="./credenciado?cmd=remover&id=<%=c.getId()%>">Remover</a>
+								</td>
+							</tr>		
+						<%	} %>
+						</tbody>
+						</table>
+						<% }  %>
 
 		</div>
 

@@ -1,6 +1,7 @@
 package model;
 
 public class Empresa {
+	private int id;
 	private String nome;
 	private String cnpj;
 	private String cep;
@@ -12,6 +13,13 @@ public class Empresa {
 	private String responsavel;
 	private String cpfresponsavel;
 	private String cpnjclinica;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;

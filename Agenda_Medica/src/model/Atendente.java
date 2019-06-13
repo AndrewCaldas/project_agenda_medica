@@ -3,6 +3,7 @@ package model;
 import java.util.Date;
 
 public class Atendente {
+	private int id;
 	private String nome;
 	private String cpf;
 	private String cep;
@@ -14,6 +15,13 @@ public class Atendente {
 	private String tel;
 	private String cel;
 	private String cpnjclinica;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;

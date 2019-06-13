@@ -18,7 +18,7 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 		try {
 			String sql = "INSERT INTO credenciado "
 					+ "(id_credenciado, id_login, nome, cpf, cep, nascimento, endereco, bairro, cidade, estado, telefone, celular, convenio) VALUES "
-					+ "(0, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "(0, 4, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
 			stmt.setString(2, c.getCpf());
@@ -44,15 +44,21 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 	public void atualizar(int id, Credenciado c) throws DAOException {
 		con = ConnectionBuilder.getInstance().getConnection();
 		try {
-			String sql = "UPDATE jogo SET nome=?, genero=?, "
-					+ "preco=?, lancamento=? WHERE id = ?";
+			String sql = "UPDATE credenciado SET nome=?, cpf=?, cep=?, nascimento=?, endereco=?, bairro=?, cidade=?, estado=?, telefone=?, celular=?, convenio=? WHERE id_credenciado = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
 			stmt.setString(2, c.getCpf());
 			stmt.setString(3, c.getCep());
 			stmt.setDate(4, 
 					new java.sql.Date(c.getDatanasc().getTime()));
-			stmt.setInt(5, id);
+			stmt.setString(5, c.getEnd());
+			stmt.setString(6, c.getBairro());
+			stmt.setString(7, c.getCidade());
+			stmt.setString(8, c.getEstado());
+			stmt.setString(9, c.getTel());
+			stmt.setString(10, c.getCel());
+			stmt.setString(11, c.getEscolha());
+			stmt.setInt(12, id);
 			stmt.executeUpdate();
 			con.close();
 		} catch (SQLException e) {
@@ -65,7 +71,7 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 	public void remover(int id) throws DAOException {
 		con = ConnectionBuilder.getInstance().getConnection();
 		try {
-			String sql = "DELETE FROM jogo WHERE id = ?";
+			String sql = "DELETE FROM credenciado WHERE id_credenciado = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
@@ -87,18 +93,18 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) { 
 				Credenciado c = new Credenciado();
-				//c.setId(rs.getInt("id"));
+				c.setId(rs.getInt("id_credenciado"));
 				c.setNome(rs.getString("nome"));
 				c.setCpf(rs.getString("cpf"));
 				c.setCep(rs.getString("cep"));
-				c.setDatanasc(rs.getDate("datanasc"));
-				c.setEnd(rs.getString("end"));
+				c.setDatanasc(rs.getDate("nascimento"));
+				c.setEnd(rs.getString("endereco"));
 				c.setBairro(rs.getString("bairro"));
 				c.setCidade(rs.getString("cidade"));
 				c.setEstado(rs.getString("estado"));
-				c.setTel(rs.getString("tel"));
-				c.setCel(rs.getString("cel"));
-				c.setEscolha(rs.getString("escolha"));
+				c.setTel(rs.getString("telefone"));
+				c.setCel(rs.getString("celular"));
+				c.setEscolha(rs.getString("convenio"));
 				lista.add(c);
 			}
 			con.close();
@@ -119,24 +125,24 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 		Credenciado c = null;
 		con = ConnectionBuilder.getInstance().getConnection();
 		try {
-			String sql = "SELECT * FROM jogo WHERE id = ?";
+			String sql = "SELECT * FROM credenciado WHERE id_credenciado = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) { 
 				c = new Credenciado();
-				c.setId(rs.getInt("id"));
+				c.setId(rs.getInt("id_credenciado"));
 				c.setNome(rs.getString("nome"));
 				c.setCpf(rs.getString("cpf"));
 				c.setCep(rs.getString("cep"));
-				c.setDatanasc(rs.getDate("datanasc"));
-				c.setEnd(rs.getString("end"));
+				c.setDatanasc(rs.getDate("nascimento"));
+				c.setEnd(rs.getString("endereco"));
 				c.setBairro(rs.getString("bairro"));
 				c.setCidade(rs.getString("cidade"));
 				c.setEstado(rs.getString("estado"));
-				c.setTel(rs.getString("tel"));
-				c.setCel(rs.getString("cel"));
-				c.setEscolha(rs.getString("escolha"));
+				c.setTel(rs.getString("telefone"));
+				c.setCel(rs.getString("celular"));
+				c.setEscolha(rs.getString("convenio"));
 			}
 			con.close();
 		} catch (SQLException e) {

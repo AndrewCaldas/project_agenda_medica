@@ -1,6 +1,7 @@
 package model;
 
 public class Clinico {
+	private int id;
 	private String nome;
 	private String cpf;
 	private String crm;
@@ -12,6 +13,13 @@ public class Clinico {
 	private String tel;
 	private String cel;
 	private String cpnjclinica;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;

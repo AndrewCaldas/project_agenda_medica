@@ -26,42 +26,47 @@ public class CredenciadoController extends HttpServlet {
 			throws IOException { 
 		CredenciadoDAO credenciadoDao = new CredenciadoDAOImpl();
 		String id = req.getParameter("id");
-		String nome = req.getParameter("nome");
-		String cpf = req.getParameter("cpf");
-		String cep = req.getParameter("cep");
-		String datanasc = req.getParameter("datanasc");
-		String end = req.getParameter("end");
-		String bairro = req.getParameter("bairro");
-		String cidade = req.getParameter("cidade");
-		String estado = req.getParameter("estado");
-		String tel = req.getParameter("tel");
-		String cel = req.getParameter("cel");
-		String escolha = req.getParameter("escolha");
+		String cmd = req.getParameter("cmd");
 		HttpSession session = req.getSession();
+		List<Credenciado> encontrados = new ArrayList<>();
 		// lista = (List<Jogo>)getServletContext().getAttribute("LISTA");
 		if (id != null && !id.isEmpty()) {
-			
-			/*if ("Cadastrar".equals(cmd)) {*/	
-				int numId = Integer.parseInt(id);
-				Credenciado c = null;
+			int numId = Integer.parseInt(id);
+			Credenciado c = null;
+			if ("editar".equals(cmd)) {	
 				try {	
 					c = credenciadoDao.pesquisarPorId(numId);
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
 				session.setAttribute("CREDENCIADO", c);
-			//}
-			/*else if ("remover".equals(cmd)) {
+				res.sendRedirect("./view/credenciado.jsp");
+			}
+			else if ("remover".equals(cmd)) {
 				try {
-					jogoDao.remover(numId);
-					session.setAttribute("ENCONTRADOS", 
-							jogoDao.pesquisarTodos());
+					credenciadoDao.remover(numId);
+					session.setAttribute("ENCONTRADOS", credenciadoDao.pesquisarTodos());
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-			}*/
+				res.sendRedirect("./view/verAgenda.jsp");
+			}
+			else if ("pesquisar".equals(cmd)) {
+				encontrados.clear();
+				//				for (Jogo jogo : lista) { 
+				//					if (jogo.getNome().contains(j.getNome())) {
+				//						encontrados.add(jogo);
+				//					}
+				//				}
+				try {
+					encontrados.addAll(credenciadoDao.pesquisarPorNome(c.getNome()));
+				} catch (DAOException e) {
+					e.printStackTrace();
+				}
+				session.setAttribute("CREDENCIADO", null);
+				res.sendRedirect("./view/verAgenda.jsp");
+			}
 		}
-		res.sendRedirect("./verAgenda.jsp");
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
@@ -132,7 +137,7 @@ public class CredenciadoController extends HttpServlet {
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-			} /*else if ("Salvar".equals(cmd)) {
+			} else if ("Salvar".equals(cmd)) {
 				//				for (Jogo jogo : lista) { 
 				//					if (jogo.getId() == j.getId()) {
 				//						lista.remove(jogo);
@@ -141,10 +146,10 @@ public class CredenciadoController extends HttpServlet {
 				//					}
 				//				}
 				try {
-					jogoDao.atualizar(j.getId(), j);
-					texto = "Jogo atualizado com sucesso";
-					encontrados.addAll(jogoDao.pesquisarTodos());
-					session.setAttribute("JOGO", null);
+					credenciadoDao.atualizar(c.getId(), c);
+//					texto = "Credenciado atualizado com sucesso";
+					encontrados.addAll(credenciadoDao.pesquisarTodos());
+					session.setAttribute("CREDENCIADO", null);
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
@@ -156,20 +161,19 @@ public class CredenciadoController extends HttpServlet {
 				//					}
 				//				}
 				try {
-					encontrados.addAll(
-							jogoDao.pesquisarPorNome(j.getNome()));
+					encontrados.addAll(credenciadoDao.pesquisarPorNome(c.getNome()));
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-				session.setAttribute("JOGO", null);
-			}*/
-			session.setAttribute("MENSAGEM", texto);
+				session.setAttribute("CREDENCIADO", null);
+			}
+			//session.setAttribute("MENSAGEM", texto);
 			session.setAttribute("ENCONTRADOS", encontrados);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		res.sendRedirect("./verAgenda.jsp");
+		res.sendRedirect("./view/verAgenda.jsp");
 	}
 }

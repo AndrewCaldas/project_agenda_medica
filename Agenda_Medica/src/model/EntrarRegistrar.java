@@ -1,6 +1,7 @@
 package model;
 
 public class EntrarRegistrar {
+	private int id;
 	private String nome;
 	private String email;
 	private String senha;
@@ -8,6 +9,13 @@ public class EntrarRegistrar {
 	private String sexo;
 	private String emailLogin;
 	private String senhaLogin;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getNome() {
 		return nome;

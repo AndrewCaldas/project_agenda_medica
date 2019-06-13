@@ -1,3 +1,6 @@
+<%@page import="DAO.CredenciadoDAOImpl"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.text.SimpleDateFormat, java.util.List, java.util.ArrayList, model.Credenciado"%>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -20,6 +23,9 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <% SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); %>
+    
   </head>
 
   <body>
@@ -105,55 +111,69 @@
         
         <!-- Esconder class, apenas adicione "hidden a classe" -->
 
-        <div class="row top">                             
+         <div class="row top">                             
                         <div class="card-form m" id="ver">
-                          <table class="table table-hover">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">3</th>
-                                <td colspan="2">Larry the Bird</td>
-                                <td>@twitter</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">4</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">5</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                <th scope="row">6</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                          <%
+                         Credenciado credenciado = (Credenciado) session.getAttribute("CREDENCIADO");
+				List<Credenciado> lista = (List<Credenciado>)session.getAttribute("ENCONTRADOS");
+					if (lista == null) { 
+						lista = new ArrayList<>();
+					} else { 
+			%>
+			
+						
+							<div class="col-md-6"> 
+								<input type="text" name="nome" class="form-control" placeholder="Digite sua pesquisa" ></input>
+								<br>
+							</div>
+							<div>
+								<a class="btn btn-pad" href="../credenciadoController?cmd=pesquisar&id=<%//=credenciado.getId()%>">Pesquisar</a>
+								<!-- <input type="submit" class="btn btn-pad" name="cmd" value="Pesquisar"/> -->
+							</div>
+						
+						
+						
+						<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>CPF</th>
+								<th>Nascimento</th>
+								<th>Endereço</th>
+								<th>CEP</th>
+								<th>Bairro</th>
+								<th>Cidade</th>
+								<th>Estado</th>
+								<th>Telefone</th>
+								<th>Celular</th>
+								<th>Convenio</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% for (Credenciado c : lista) { 	%>
+							<tr>
+								<td><%=c.getId()%></td> 
+								<td><%=c.getNome()%></td> 
+								<td><%=c.getCpf()%></td> 
+								<td><%=sdf.format(c.getDatanasc())%></td>
+								<td><%=c.getEnd()%></td> 
+								<td><%=c.getCep()%></td>
+								<td><%=c.getBairro()%></td>
+								<td><%=c.getCidade()%></td>
+								<td><%=c.getEstado()%></td>
+								<td><%=c.getTel()%></td>
+								<td><%=c.getCel()%></td>
+								<td><%=c.getEscolha()%></td>        
+								<td>
+									<a href="../credenciadoController?cmd=editar&id=<%=c.getId()%>">Editar</a>  
+									<a href="../credenciadoController?cmd=remover&id=<%=c.getId()%>">Remover</a>
+								</td>
+							</tr>		
+						<%	} %>
+						</tbody>
+						</table>
+						<% }  %>
                         </div>
                 </div>
         </div>
