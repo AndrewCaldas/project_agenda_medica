@@ -1,18 +1,20 @@
 package model;
 
-public class Empresa {
+import java.io.Serializable;
+
+public class Empresa implements Serializable {
+	private static final long serialVersionUID = 5342902659347926787L;
 	private int id;
-	private String nome;
-	private String cnpj;
-	private String cep;
-	private String end;
-	private String bairro;
-	private String cidade;
-	private String estado;
-	private String tel;
-	private String responsavel;
-	private String cpfresponsavel;
-	private String cpnjclinica;
+	private String nome = "";
+	private String cnpj = "";
+	private String cep = "";
+	private String end = "";
+	private String bairro = "";
+	private String cidade = "";
+	private String estado = "";
+	private String tel = "";
+	private String responsavel = "";
+	private String cpfresponsavel = "";
 	
 	public int getId() {
 		return id;
@@ -89,13 +91,6 @@ public class Empresa {
 	}
 	public void setCpfResponsavel(String cpfresponsavel) {
 		this.cpfresponsavel = cpfresponsavel;
-	}
-	
-	public String getCpnjclinica() {
-		return cpnjclinica;
-	}
-	public void setCpnjclinica(String cpnjclinica) {
-		this.cpnjclinica = cpnjclinica;
 	}
 	
 }

@@ -4,17 +4,18 @@ import java.util.Date;
 
 public class Atendente {
 	private int id;
-	private String nome;
-	private String cpf;
-	private String cep;
+	private String nome = "";
+	private String cpf = "";
+	private String cep = "";
 	private Date datanasc = new Date();
-	private String end;
-	private String bairro;
-	private String cidade;
-	private String estado;
-	private String tel;
-	private String cel;
-	private String cpnjclinica;
+	private String end = "";
+	private String bairro = "";
+	private String cidade = "";
+	private String estado = "";
+	private String tel = "";
+	private String cel = "";
+	private int clinica = 0;
+	private String clinicanome = "";
 	
 	public int getId() {
 		return id;
@@ -93,11 +94,18 @@ public class Atendente {
 		this.cel = cel;
 	}
 	
-	public String getCpnjclinica() {
-		return cpnjclinica;
+	public int getClinica() {
+		return clinica;
 	}
-	public void setCpnjclinica(String cpnjclinica) {
-		this.cpnjclinica = cpnjclinica;
+	public void setClinica(int clinica) {
+		this.clinica = clinica;
+	}
+	
+	public String getClinicaNome() {
+		return clinicanome;
+	}
+	public void setClinicaNome(String clinicanome) {
+		this.clinicanome = clinicanome;
 	}
 	
 }

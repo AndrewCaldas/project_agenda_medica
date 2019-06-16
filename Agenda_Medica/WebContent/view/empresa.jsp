@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Agenda Médica Online - Empresa</title>
+	<title>Agenda Médica Online - Clínica</title>
 
 	<!-- Imagehover CSS -->
 	<link rel="stylesheet" href="../resources/css/imagehover.min.css">
@@ -124,63 +124,62 @@
 		<div class="capa">
 			<div class="col-sm-8 card-box">
 				<h3 class="text">
-					<b>Cadastramento Empresa</b>
+					<b>Cadastramento Clínica</b>
 				</h3>
 				<br> <br>
 				<form action="../empresaController" method="post">
 					<!-- campo ID do registro -->
 					<div hidden>
-						<input type="numeric" name="id" class="form-control" value="<%=empresa.getId() %>">
+						<input type="text" name="id" class="form-control" value="<%=empresa.getId() %>">
 					</div>
-           			
-					<!-- Nome da Clinica -->
-					<div class="form-group">
-						<label for="nome">*Nome da Clínica:</label>
-						<input type="text" name="nome" class="form-control" value="<%=empresa.getNome()%>">
-					</div>
+					
+					<!-- Nome -->
+                	<div class="form-group">
+                  		<label for="nome">*Nome da Clínica:</label>
+                  		<input type="text" name="nome" class="form-control" value="<%=empresa.getNome() %>">
+                	</div>
 
-					<!-- cnpj -->
-					<div class="row">
-						<div class="form-group col-md-6">
-							<label for="cnpj">*CNPJ:</label>
-							<input type="text" name="cnpj" class="form-control" maxlength="14" onkeydown="javascript: fMasc( this, mCNPJ );" value="<%=empresa.getCnpj()%>">
-							<small id="cnpjHelp" class="form-text text-muted">Preenchimento do CNPJ é obrigatorio!</small>
-						</div>
+	                <div class="row">
+    	                <!-- cpf -->
+        	            <div class="form-group col-md-6">
+            	         	<label for="cnpj">*CNPJ:</label>
+                	     	<input type="text" name="cnpj" class="form-control" maxlength="18" onkeydown="javascript: fMasc( this, mCNPJ );" value="<%=empresa.getCnpj() %>">
+                    	 	<small id="CNPJHelp" class="form-text text-muted">Preenchimento do CNPJ, é obrigatorio!</small>
+                    	</div>
 
-						<!-- CEP -->
-						<div class="form-group col-md-4">
-							<label for="cep">*CEP:</label>
-							<input type="numeric" name="cep" class="form-control" maxlength="9" onkeydown="javascript: fMasc( this, mCEP );" value="<%=empresa.getCep()%>">
-						</div>
-					</div>
+                    	<!-- CEP -->
+                    	<div class="form-group col-md-6">
+                      		<label for="cep">*CEP:</label>
+                      		<input type="text" name="cep" class="form-control" maxlength="9" onkeydown="javascript: fMasc( this, mCEP );" value="<%=empresa.getCep() %>">
+                    	</div>
+                	</div>
 
-					<div class="row">
-						<!-- endereço -->
-						<div class="form-group col-md-8">
-							<label for="end">*Endereço:</label> 
-							<input type="text" name="end" class="form-control" placeholder="ex: Rua Joaquim Santos" value="<%=empresa.getEnd()%>">
-							<small id="endereçoHelp" class="form-text text-muted">Insira um endereço existente, por favor.</small>
-						</div>
-					</div>
+                	<!-- endereço -->
+                	<div class="form-group">
+                  		<label for="end">*Endereço:</label>
+                  		<input type="text" name="end" class="form-control" placeholder="ex: Rua Aguiar Meira" value="<%=empresa.getEnd() %>">
+                  		<small id="endereçoHelp" class="form-text text-muted">Insira um endereço existente, por favor.</small>
+                	</div>
 
-					<!-- bairro -->
-					<div class="form-group">
-						<label for="nome">*Bairro:</label> 
-						<input type="text" name="bairro" class="form-control" value="<%=empresa.getBairro()%>">
-					</div>
+                	<!-- bairro -->
+                	<div class="form-group">
+                  		<label for="nome">*Bairro:</label>
+                  		<input type="text" name="bairro" class="form-control" value="<%=empresa.getBairro() %>">
+                	</div>
 
-					<div class="row">
-						<!-- cidade -->
-						<div class="form-group col-md-6">
-							<label for="cidade">*Cidade:</label>
-							<input type="text" name="cidade" class="form-control" value="<%=empresa.getCidade()%>">
-						</div>
+                	<div class="row">
+                		<!-- cidade -->
+                		<div class="form-group col-md-6">
+                  			<label for="cidade">*Cidade:</label>
+                  			<input type="text" name="cidade" class="form-control" value="<%=empresa.getCidade() %>">
+                		</div>
 
-						<!-- estado-->
-						<div class="form-group col-md-4">
-							<label>*Estado:</label> <br>
-							<select name="estado">
-								<option value="estado">Selecione o Estado</option>
+                		<!-- estado-->
+                		<div class="form-group col-md-4">
+		                	<label>*Estado:</label>
+    	              		<br>
+        	          		<select name="estado"> 
+            	          		<option value="estado">Selecione o Estado</option>
 								<option value="Acre" <%=empresa.getEstado().equals("Acre")?"selected" : ""%>>Acre</option>
 								<option value="Alagoas" <%=empresa.getEstado().equals("Alagoas")?"selected" : ""%>>Alagoas</option>
 								<option value="Amazonas" <%=empresa.getEstado().equals("Amazonas")?"selected" : ""%>>Amazonas</option>
@@ -208,45 +207,93 @@
 								<option value="Sergipe" <%=empresa.getEstado().equals("Sergipe")?"selected" : ""%>>Sergipe</option>
 								<option value="Sao Paulo" <%=empresa.getEstado().equals("Sao Paulo")?"selected" : ""%>>São Paulo</option>
 								<option value="Tocantins" <%=empresa.getEstado().equals("Tocantins")?"selected" : ""%>>Tocantins</option>
-							</select>
-						</div>
-					</div>
+                  			</select>
+                		</div>
+	                </div>
 
-					<div class="row">					
-						<!-- telefone -->
-						<div class="form-group col-md-5">
-							<label for="tel">*Telefone:</label>
-							<input type="tel" name="tel" class="form-control" placeholder="ex: (11) 2487-5698" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" value="<%=empresa.getTel()%>">
-						</div>
-					</div>
+    	            <div class="row">
+        	            <!-- telefone -->
+            	        <div class="form-group col-md-4">
+                	     	<label for="tel">*Telefone:</label>
+                    	 	<input type="text" name="tel" class="form-control" placeholder="ex: +55 11 24875698" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" value="<%=empresa.getTel() %>">
+                    	</div>
+                	</div>
 
-					<!-- responsavel -->
-					<div class="row">
-						<div class="form-group col-md-6">
-							<label for="responsavel">*Responsável:</label>
-							<input type="text" name="responsavel" class="form-control" value="<%=empresa.getResponsavel()%>">
-						</div>
+                	<div class="row">
+                		<!-- responsavel -->
+                		<div class="form-group col-md-8">
+	                  		<label for="responsavel">*Responsável:</label>
+    	              		<input type="text" name="responsavel" class="form-control" value="<%=empresa.getResponsavel() %>">
+        	        	</div>
 
-						<!-- CPF do Responsavel -->
-						<div class="form-group col-md-6">
-							<label for="cpfresponsavel">*CPF:</label>
-							<input type="text" name="cpfresponsavel" class="form-control" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );" value="<%=empresa.getCpfResponsavel()%>">
-						</div>
-					</div>
+            	    	<!-- CPF Responsavel -->
+                	    <div class="form-group col-md-4">
+                    		<label for="cpfresponsavel">*CPF do Responsável:</label>
+                    		<input type="text" name="cpfresponsavel" class="form-control" maxlength="14" onkeydown="javascript: fMasc( this, mCPF );" value="<%=empresa.getCpfResponsavel() %>">
+                    	</div>
+                	</div>
+                
+                	<br>
 
-					<br> <%if (empresa.getId() == 0) { %>
+                	<%if (empresa.getId() == 0) { %>
 							<input type="submit" name="cmd" value="Cadastrar" class="btn btn-custom btn-pad "/>
 						 <%} else { %>
-						 	<div class="alert alert-warning">
-  								<strong>Alerta!</strong> Empresa já existe.
-							</div>
+						 	<input type="submit" name="cmd" value="Salvar" class="btn btn-custom btn-pad "/>
+						 	<!-- <div class="alert alert-warning">
+  								<strong>Alerta!</strong> Credenciado já existe.
+							</div> -->
 						 <% }%>
 
 					<a href="conta.jsp" class="btn btn-custom btn-pad ">Voltar</a>
-
 				</form>
-
 			</div>
+			
+			<%
+				List<Empresa> lista = (List<Empresa>)session.getAttribute("ENCONTRADOS");
+					if (lista == null) { 
+						lista = new ArrayList<>();
+					} else { 
+			%>
+						<table class="table table-striped ">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>CNPJ</th>
+								<th>Endereço</th>
+								<th>CEP</th>
+								<th>Bairro</th>
+								<th>Cidade</th>
+								<th>Estado</th>
+								<th>Telefone</th>
+								<th>Responsavel</th>
+								<th>CPF Responsavel</th>
+							</tr>
+						</thead>
+						<tbody>
+						<%
+							for (Empresa emp : lista) { 	%>
+							<tr>
+								<td><%=emp.getId()%></td> 
+								<td><%=emp.getNome()%></td> 
+								<td><%=emp.getCnpj()%></td> 
+								<td><%=emp.getEnd()%></td> 
+								<td><%=emp.getCep()%></td>
+								<td><%=emp.getBairro()%></td>
+								<td><%=emp.getCidade()%></td>
+								<td><%=emp.getEstado()%></td>
+								<td><%=emp.getTel()%></td>
+								<td><%=emp.getResponsavel()%></td>
+								<td><%=emp.getCpfResponsavel()%></td>        
+								<td>
+									<a href="../empresaController?cmd=editar&id=<%=emp.getId()%>">Editar</a> - 
+									<a href="../empresaController?cmd=remover&id=<%=emp.getId()%>">Remover</a>
+								</td>
+							</tr>		
+						<%	} %>
+						</tbody>
+						</table>
+						<% }  %>
 
 		</div>
 

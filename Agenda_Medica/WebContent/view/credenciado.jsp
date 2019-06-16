@@ -238,12 +238,11 @@
 					<div class="radio">
 						<label class="text">Conveniado: </label>
 						<label class="text">
-							<input type="radio" name="escolha" value="S"> Sim
+							<input type="radio" name="escolha" value="S" <%=credenciado.getEscolha().equals("S")?"checked" : ""%>> Sim
 						</label>
 						<label class="text">
-							<input type="radio" name="escolha" value="N"> Não
+							<input type="radio" name="escolha" value="N" <%=credenciado.getEscolha().equals("N")?"checked" : ""%>> Não
 						</label>
-						<%=credenciado.getEscolha()%>
 					</div>
 
 					<br> <%if (credenciado.getId() == 0) { %>

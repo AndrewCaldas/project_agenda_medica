@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,43 +13,43 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.DAOException;
-import model.Empresa;
-import DAO.EmpresaDAO;
-import DAO.EmpresaDAOImpl;
+import model.Atendente;
+import DAO.AtendenteDAO;
+import DAO.AtendenteDAOImpl;
 
-@WebServlet("/empresaController")
-public class EmpresaController extends HttpServlet {
+@WebServlet("/atendenteController")
+public class AtendenteController extends HttpServlet {
 	// private List<Jogo> lista;
 	private static final long serialVersionUID = 5931706310984055050L;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) 
 			throws IOException { 
-		EmpresaDAO empresaDao = new EmpresaDAOImpl();
+		AtendenteDAO atendenteDao = new AtendenteDAOImpl();
 		String id = req.getParameter("id");
 		String cmd = req.getParameter("cmd");
 		HttpSession session = req.getSession();
-		List<Empresa> encontrados = new ArrayList<>();
+		List<Atendente> encontrados = new ArrayList<>();
 		// lista = (List<Jogo>)getServletContext().getAttribute("LISTA");
 		if (id != null && !id.isEmpty()) {
 			int numId = Integer.parseInt(id);
-			Empresa emp = null;
+			Atendente ate = null;
 			if ("editar".equals(cmd)) {	
 				try {	
-					emp = empresaDao.pesquisarPorId(numId);
+					ate = atendenteDao.pesquisarPorId(numId);
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-				session.setAttribute("EMPRESA", emp);
-				res.sendRedirect("./view/empresa.jsp");
+				session.setAttribute("ATENDENTE", ate);
+				res.sendRedirect("./view/atendente.jsp");
 			}
 			else if ("remover".equals(cmd)) {
 				try {
-					empresaDao.remover(numId);
-					session.setAttribute("ENCONTRADOS", empresaDao.pesquisarTodos());
+					atendenteDao.remover(numId);
+					session.setAttribute("ENCONTRADOS", atendenteDao.pesquisarTodos());
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-				res.sendRedirect("./view/empresa.jsp");
+				res.sendRedirect("./view/atendente.jsp");
 			}
 			else if ("pesquisar".equals(cmd)) {
 				encontrados.clear();
@@ -57,19 +59,19 @@ public class EmpresaController extends HttpServlet {
 				//					}
 				//				}
 				try {
-					encontrados.addAll(empresaDao.pesquisarPorNome(emp.getNome()));
+					encontrados.addAll(atendenteDao.pesquisarPorNome(ate.getNome()));
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-				session.setAttribute("EMPRESA", null);
-				res.sendRedirect("./view/empresa.jsp");
+				session.setAttribute("ATENDENTE", null);
+				res.sendRedirect("./view/atendente.jsp");
 			}
 		}
 	}
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws IOException {
-		EmpresaDAO empresaDao = new EmpresaDAOImpl();
+		AtendenteDAO atendenteDao = new AtendenteDAOImpl();
 		HttpSession session = req.getSession();
 		// lista = (List<Jogo>)getServletContext().getAttribute("LISTA");
 		// if (lista == null) { 
@@ -83,51 +85,55 @@ public class EmpresaController extends HttpServlet {
 			}
 			String cmd = req.getParameter("cmd");
 			String nome = req.getParameter("nome");
-			String cnpj = req.getParameter("cnpj");
+			String cpf = req.getParameter("cpf");
 			String cep = req.getParameter("cep");
+			String datanasc = req.getParameter("datanasc");
 			String end = req.getParameter("end");
 			String bairro = req.getParameter("bairro");
 			String cidade = req.getParameter("cidade");
 			String estado = req.getParameter("estado");
 			String tel = req.getParameter("tel");
-			String responsavel = req.getParameter("responsavel");
-			String cpfresponsavel = req.getParameter("cpfresponsavel");
+			String cel = req.getParameter("cel");
+			int clinica = Integer.parseInt(req.getParameter("clinica"));
 			int intId = Integer.parseInt(id);
+
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	
 
 			System.out.println(cmd);
 			System.out.println(intId);
 			System.out.println(nome);
-			System.out.println(cnpj);
+			System.out.println(cpf);
 			System.out.println(cep);
+			System.out.println(datanasc);
 			System.out.println(end);
 			System.out.println(bairro);
 			System.out.println(cidade);
-			System.out.println(estado);
 			System.out.println(tel);
-			System.out.println(responsavel);
-			System.out.println(cpfresponsavel);
+			System.out.println(cel);
+			System.out.println(clinica);
 			
-			Empresa emp = new Empresa();
-			emp.setId(intId);
-			emp.setNome(nome);
-			emp.setCnpj(cnpj);
-			emp.setCep(cep);
-			emp.setEnd(end);
-			emp.setBairro(bairro);
-			emp.setCidade(cidade);
-			emp.setEstado(estado);
-			emp.setTel(tel);
-			emp.setResponsavel(responsavel);
-			emp.setCpfResponsavel(cpfresponsavel);
+			Atendente ate = new Atendente();
+			ate.setId(intId);
+			ate.setNome(nome);
+			ate.setCpf(cpf);
+			ate.setCep(cep);
+			ate.setDatanasc(sdf.parse(datanasc));
+			ate.setEnd(end);
+			ate.setBairro(bairro);
+			ate.setCidade(cidade);
+			ate.setEstado(estado);
+			ate.setTel(tel);
+			ate.setCel(cel);
+			ate.setClinica(clinica);
 
 			String texto = "";
-			List<Empresa> encontrados = new ArrayList<>();
+			List<Atendente> encontrados = new ArrayList<>();
 			if ("Cadastrar".equals(cmd)) { 
 				try {
-					empresaDao.adicionar(emp);
-					texto = "Empresa cadastrado com sucesso";
-					session.setAttribute("EMPRESA", null);
-					encontrados.addAll(empresaDao.pesquisarTodos());
+					atendenteDao.adicionar(ate);
+					texto = "Atendente cadastrado com sucesso";
+					session.setAttribute("ATENDENTE", null);
+					encontrados.addAll(atendenteDao.pesquisarTodos());
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
@@ -140,10 +146,10 @@ public class EmpresaController extends HttpServlet {
 				//					}
 				//				}
 				try {
-					empresaDao.atualizar(emp.getId(), emp);
-//					texto = "Empresa atualizado com sucesso";
-					encontrados.addAll(empresaDao.pesquisarTodos());
-					session.setAttribute("EMPRESA", null);
+					atendenteDao.atualizar(ate.getId(), ate);
+//					texto = "Atendente atualizado com sucesso";
+					encontrados.addAll(atendenteDao.pesquisarTodos());
+					session.setAttribute("ATENDENTE", null);
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
@@ -155,17 +161,19 @@ public class EmpresaController extends HttpServlet {
 				//					}
 				//				}
 				try {
-					encontrados.addAll(empresaDao.pesquisarPorNome(emp.getNome()));
+					encontrados.addAll(atendenteDao.pesquisarPorNome(ate.getNome()));
 				} catch (DAOException e) {
 					e.printStackTrace();
 				}
-				session.setAttribute("EMPRESA", null);
+				session.setAttribute("ATENDENTE", null);
 			}
 			//session.setAttribute("MENSAGEM", texto);
 			session.setAttribute("ENCONTRADOS", encontrados);
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
-		res.sendRedirect("./view/empresa.jsp");
+		res.sendRedirect("./view/atendente.jsp");
 	}
 }
