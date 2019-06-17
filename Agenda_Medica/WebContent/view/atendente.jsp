@@ -114,7 +114,7 @@
 	<div class="container">
 		<%
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			Atendente atendente = (Atendente) session.getAttribute("CREDENCIADO");
+			Atendente atendente = (Atendente) session.getAttribute("ATENDENTE");
 			if (atendente == null) {
 				atendente = new Atendente();
 			}
@@ -252,8 +252,9 @@
 										lista_empresa = new ArrayList<>();
 									} else {
 									for (Empresa emp : lista_empresa) {
+										int id = emp.getId();
 								%>
-                            	<option value="<%=emp.getId()%>" <%=atendente.getClinica() != 0 ? "selected" : ""%>><%=emp.getCnpj()%> - <%=emp.getNome()%></option>
+                            	<option value="<%=emp.getId()%>" <%=atendente.getClinica() == id ? "selected" : ""%>><%=emp.getCnpj()%> - <%=emp.getNome()%></option>
                             	<%	}} %>
                         	</select>
                     	</div>
