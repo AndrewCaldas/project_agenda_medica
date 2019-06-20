@@ -44,7 +44,7 @@ public class AtendenteDAOImpl implements AtendenteDAO {
 	public void atualizar(int id, Atendente ate) throws DAOException {
 		con = ConnectionBuilder.getInstance().getConnection();
 		try {
-			String sql = "UPDATE atendente SET nome=?, cpf=?, nascimento=?, endereco=?, cep=?, bairro=?, cidade=?, estado=?, telefone=?, celular=? WHERE id_atendente = ?";
+			String sql = "UPDATE atendente SET nome=?, cpf=?, nascimento=?, endereco=?, cep=?, bairro=?, cidade=?, estado=?, telefone=?, celular=?, id_clinica=? WHERE id_atendente = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, ate.getNome());
 			stmt.setString(2, ate.getCpf());
@@ -57,7 +57,8 @@ public class AtendenteDAOImpl implements AtendenteDAO {
 			stmt.setString(8, ate.getEstado());
 			stmt.setString(9, ate.getTel());
 			stmt.setString(10, ate.getCel());
-			stmt.setInt(11, id);
+			stmt.setInt(11, ate.getClinica());
+			stmt.setInt(12, id);
 			stmt.executeUpdate();
 			con.close();
 		} catch (SQLException e) {
