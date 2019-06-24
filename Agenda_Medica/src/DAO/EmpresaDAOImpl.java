@@ -15,10 +15,24 @@ public class EmpresaDAOImpl implements EmpresaDAO {
 	@Override
 	public void adicionar(Empresa emp) throws DAOException {
 		con = ConnectionBuilder.getInstance().getConnection();
+		
+		try {
+			String sql = "UPDATE login SET "
+					+ "id_perfil = 1, acesso_sistema = 2 WHERE "
+					+ "id_login = (SELECT * FROM (SELECT MAX(id_login) FROM login) a);";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.execute();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e);
+		}
+		
+		con = ConnectionBuilder.getInstance().getConnection();
 		try {
 			String sql = "INSERT INTO clinica "
 					+ "(id_clinica, id_login, nome, cnpj, cep, endereco, bairro, cidade, estado, telefone, responsavel, cpf_responsavel) VALUES "
-					+ "(0, 1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "(0, (SELECT MAX(id_login) FROM login), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, emp.getNome());
 			stmt.setString(2, emp.getCnpj());

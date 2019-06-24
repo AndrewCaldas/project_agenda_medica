@@ -15,11 +15,25 @@ public class ClinicoDaoImpl implements ClinicoDAO{
 	@Override
 	public void adicionar(Clinico c) throws DAOException {
 		con = ConnectionBuilder.getInstance().getConnection();
+		
+		try {
+			String sql = "UPDATE login SET "
+					+ "id_perfil = 2, acesso_sistema = 1 WHERE "
+					+ "id_login = (SELECT * FROM (SELECT MAX(id_login) FROM login) a);";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.execute();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e);
+		}
+		
+		con = ConnectionBuilder.getInstance().getConnection();
 		try {
 			String sql = "INSERT INTO medico "
 					//+ "(id_medico, id_clinica, id_login, nome, cpf, crm, nascimento, endereco, cep, bairro, id_cidade, telefone, celular, foto) VALUES "
 					+ "(id_login, id_clinica, nome, cpf, crm, nascimento, endereco, cep, bairro, cidade, estado, telefone, celular) VALUES "
-					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "((SELECT MAX(id_login) FROM login), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			//stmt.setInt(1, c.getId_medico());
 			stmt.setInt(1, c.getId_login());

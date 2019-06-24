@@ -15,10 +15,24 @@ public class CredenciadoDAOImpl implements CredenciadoDAO {
 	@Override
 	public void adicionar(Credenciado c) throws DAOException {
 		con = ConnectionBuilder.getInstance().getConnection();
+		
+		try {
+			String sql = "UPDATE login SET "
+					+ "id_perfil = 4, acesso_sistema = 1 WHERE "
+					+ "id_login = (SELECT * FROM (SELECT MAX(id_login) FROM login) a);";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.execute();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e);
+		}
+		
+		con = ConnectionBuilder.getInstance().getConnection();
 		try {
 			String sql = "INSERT INTO credenciado "
 					+ "(id_credenciado, id_login, nome, cpf, cep, nascimento, endereco, bairro, cidade, estado, telefone, celular, convenio) VALUES "
-					+ "(0, 4, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "(0, (SELECT MAX(id_login) FROM login), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, c.getNome());
 			stmt.setString(2, c.getCpf());

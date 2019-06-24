@@ -15,10 +15,24 @@ public class AtendenteDAOImpl implements AtendenteDAO {
 	@Override
 	public void adicionar(Atendente ate) throws DAOException {
 		con = ConnectionBuilder.getInstance().getConnection();
+		
+		try {
+			String sql = "UPDATE login SET "
+					+ "id_perfil = 3, acesso_sistema = 1 WHERE "
+					+ "id_login = (SELECT * FROM (SELECT MAX(id_login) FROM login) a);";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.execute();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException(e);
+		}
+		
+		con = ConnectionBuilder.getInstance().getConnection();
 		try {
 			String sql = "INSERT INTO atendente "
 					+ "(id_atendente, id_login, id_clinica, nome, cpf, nascimento, endereco, cep, bairro, cidade, estado, telefone, celular) VALUES "
-					+ "(0, 3, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+					+ "(0, (SELECT MAX(id_login) FROM login), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, ate.getClinica());
 			stmt.setString(2, ate.getNome());
