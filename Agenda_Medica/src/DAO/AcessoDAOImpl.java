@@ -1,37 +1,45 @@
 package DAO;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import com.mysql.cj.jdbc.Blob;
 
 import model.AcessoLogin;
-public class AcessoDAOImpl{
+
+public class AcessoDAOImpl implements AcessoDAO{
+	private Connection con;
 	
-	private Connection con; 
-	public List<AcessoLogin> acessar(String email, String senha) throws DAOException {
-		List<AcessoLogin> lista = new ArrayList<>();
+	@Override
+	public boolean acessar(AcessoLogin al) throws DAOException {
+		boolean result = false;
+		
 		con = ConnectionBuilder.getInstance().getConnection();
 		try {
-			String sql = "SELECT email, senha FROM login WHERE email = ? and senha = ?";
+			/*String sql = "SELECT CASE WHEN a = 1 THEN 'TRUE' ELSE 'FALSE' END AS ACESSO "
+						+ "FROM (SELECT COUNT(ID_LOGIN) AS a FROM login	"
+						+ "WHERE email = ? AND senha = ?) a;";
+			
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, email);
-			stmt.setString(2, senha);
-			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) { 
-				AcessoLogin acesso = new AcessoLogin();
-				acesso.setEmail(rs.getString("email"));
-				acesso.setSenha(rs.getString("senha"));
-				lista.add(acesso);				
-			}
+			stmt.setString(1, al.getEmail());
+			stmt.setString(2, al.getSenha());*/
+			
+			String sql = "CALL Acessar(?,?);";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, al.getEmail());
+			stmt.setString(2, al.getSenha());
+			ResultSet rs = stmt.executeQuery ();   
+			rs.absolute (1);  
+			//System.out.println (rs.getString (1));
+			result = Boolean.parseBoolean(rs.getString (1));
+			
+			//stmt.execute();
 			con.close();
+			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DAOException(e);
 		}
-		return lista;
 	}
 	
 }

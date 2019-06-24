@@ -40,6 +40,15 @@ public class EmpresaController extends HttpServlet {
 				session.setAttribute("EMPRESA", emp);
 				res.sendRedirect("./view/empresa.jsp");
 			}
+			else if ("listar".equals(cmd)) {
+				try {
+					session.setAttribute("ENCONTRADOS",null);
+					session.setAttribute("ENCONTRADOS", empresaDao.pesquisarTodos());
+				} catch (DAOException e) {
+					e.printStackTrace();
+				} 
+				res.sendRedirect("./view/verAgenda.jsp");
+			}
 			else if ("remover".equals(cmd)) {
 				try {
 					empresaDao.remover(numId);

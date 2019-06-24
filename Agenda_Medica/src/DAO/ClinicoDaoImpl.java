@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.mysql.cj.jdbc.Blob;
+
 import model.Clinico;
+
 public class ClinicoDaoImpl implements ClinicoDAO{
-	private static final Blob foto = null;
 	private Connection con;
 	
 	@Override

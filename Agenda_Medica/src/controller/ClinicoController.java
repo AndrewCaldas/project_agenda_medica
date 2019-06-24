@@ -14,9 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DAO.AtendenteDAO;
+import DAO.AtendenteDAOImpl;
 import DAO.ClinicoDAO;
 import DAO.ClinicoDaoImpl;
 import DAO.DAOException;
+import model.Atendente;
 import model.Clinico;
 
 @WebServlet("/clinicoController")
@@ -24,9 +27,60 @@ public class ClinicoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
-	response.sendRedirect("./view/alteraClinico.jsp");
+			throws ServletException, IOException { 
+		AtendenteDAO atendenteDao = new AtendenteDAOImpl();
+		//ClinicoDAO clinicoDao = new ClinicoDAOImpl();
+		String id = request.getParameter("id");
+		String cmd = request.getParameter("cmd");
+		HttpSession session = request.getSession();
+		List<Atendente> encontrados = new ArrayList<>();
+		// lista = (List<Jogo>)getServletContext().getAttribute("LISTA");
+		if (id != null && !id.isEmpty()) {
+			int numId = Integer.parseInt(id);
+			Atendente ate = null;
+			if ("editar".equals(cmd)) {	
+				try {	
+					ate = atendenteDao.pesquisarPorId(numId);
+				} catch (DAOException e) {
+					e.printStackTrace();
+				}
+				session.setAttribute("ATENDENTE", ate);
+				response.sendRedirect("./view/atendente.jsp");
+			}
+			else if ("listar".equals(cmd)) {
+				//try {
+				session.setAttribute("ENCONTRADOS",null);
+					//session.setAttribute("ENCONTRADOS", clinicoDao.pesquisarTodos());
+				//} //catch (DAOException e) {
+					//e.printStackTrace();
+				//} 
+				response.sendRedirect("./view/verAgenda.jsp");
+			}
+			else if ("remover".equals(cmd)) {
+				try {
+					atendenteDao.remover(numId);
+					session.setAttribute("ENCONTRADOS", atendenteDao.pesquisarTodos());
+				} catch (DAOException e) {
+					e.printStackTrace();
+				}
+				response.sendRedirect("./view/atendente.jsp");
+			}
+			else if ("pesquisar".equals(cmd)) {
+				encontrados.clear();
+				//				for (Jogo jogo : lista) { 
+				//					if (jogo.getNome().contains(j.getNome())) {
+				//						encontrados.add(jogo);
+				//					}
+				//				}
+				try {
+					encontrados.addAll(atendenteDao.pesquisarPorNome(ate.getNome()));
+				} catch (DAOException e) {
+					e.printStackTrace();
+				}
+				session.setAttribute("ATENDENTE", null);
+				response.sendRedirect("./view/atendente.jsp");
+			}
+		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

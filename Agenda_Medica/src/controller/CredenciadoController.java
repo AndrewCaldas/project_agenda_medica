@@ -42,6 +42,15 @@ public class CredenciadoController extends HttpServlet {
 				session.setAttribute("CREDENCIADO", c);
 				res.sendRedirect("./view/credenciado.jsp");
 			}
+			else if ("listar".equals(cmd)) {
+				try {
+					session.setAttribute("ENCONTRADOS",null);
+					session.setAttribute("ENCONTRADOS", credenciadoDao.pesquisarTodos());
+				} catch (DAOException e) {
+					e.printStackTrace();
+				} 
+				res.sendRedirect("./view/verAgenda.jsp");
+			}
 			else if ("remover".equals(cmd)) {
 				try {
 					credenciadoDao.remover(numId);

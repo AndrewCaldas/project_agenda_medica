@@ -42,6 +42,17 @@ public class AtendenteController extends HttpServlet {
 				session.setAttribute("ATENDENTE", ate);
 				res.sendRedirect("./view/atendente.jsp");
 			}
+			else if ("listar".equals(cmd)) {
+				try {
+					
+			    	session.setAttribute("ENCONTRADOS",null);
+			    
+					session.setAttribute("ENCONTRADOS", atendenteDao.pesquisarTodos());
+				} catch (DAOException e) {
+					e.printStackTrace();
+				} 
+				res.sendRedirect("./view/verAgenda.jsp");
+			}
 			else if ("remover".equals(cmd)) {
 				try {
 					atendenteDao.remover(numId);

@@ -10,8 +10,8 @@ public class ConnectionBuilder {
 	private Connection con;
 	private static final String DB_URL = "jdbc:mysql://localhost:3306/agenda_medica?useTimezone=true&serverTimezone=UTC";
 	private static final String DB_USER = "root"; 
-	//private static final String DB_PASS = "alunofatec";
-	private static final String DB_PASS = "123456";
+	private static final String DB_PASS = "alunofatec";
+	//private static final String DB_PASS = "123456";
 	
 	private ConnectionBuilder() { 
 		
